@@ -1,0 +1,46 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-title>Signin</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Entrer votre email"
+            type="email"
+          />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Mot de passe</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            placeholder="Entrer votre email"
+            type="password"
+          />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            [disabled]="!form.valid"
+            mat-raised-button
+            color="primary"
+            *ngIf="!signinProcess; else loader"
+          >
+            Connexion
+          </button>
+          <ng-template #loader>
+            <button mat-raised-button>
+              <mat-spinner [diameter]="30"></mat-spinner>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>
